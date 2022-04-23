@@ -6,7 +6,7 @@ public class RacingCar {
     final private String name;
     private int travel;
 
-    public RacingCar(String name){
+    private RacingCar(String name){
         this.name = racingCarCreateValidation(name);
         this.travel = 0;
     }
@@ -21,6 +21,10 @@ public class RacingCar {
 
     public void raingDistance(int travel) {
         this.travel = this.travel + travel;
+    }
+
+    public static RacingCar getInstance(String name){
+        return new RacingCar(name);
     }
 
     /**

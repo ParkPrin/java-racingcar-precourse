@@ -1,4 +1,4 @@
-package racingcar.service;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,9 +6,9 @@ import java.util.Map;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.RacingCar;
 
-public class RacingCarFactory {
+public class CarManager {
     private Map<String, RacingCar> racingJoinCars;
-    public RacingCarFactory(){
+    public CarManager(){
         racingJoinCars = new HashMap<>();
     }
 
@@ -24,7 +24,7 @@ public class RacingCarFactory {
     private RacingCar joinRacingCar(String name){
         RacingCar racingCar = null;
         try{
-            racingCar = new RacingCar(name);
+            racingCar = RacingCar.getInstance(name);
         } catch(IllegalArgumentException e){
             racingJoinCars.clear();
         }

@@ -16,7 +16,7 @@ public class RacingCarTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCar racingcar = new RacingCar(name)            ;
+                    RacingCar racingcar = RacingCar.getInstance(name);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -32,7 +32,7 @@ public class RacingCarTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCar racingcar = new RacingCar(name)            ;
+                    RacingCar racingcar = RacingCar.getInstance(name);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -46,7 +46,7 @@ public class RacingCarTest {
         String name = "jimi";
 
         // when
-        RacingCar racingcar = new RacingCar(name);
+        RacingCar racingcar = RacingCar.getInstance(name);
 
         // then
         assertEquals(racingcar.getName(), name);
