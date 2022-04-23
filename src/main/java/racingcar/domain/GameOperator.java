@@ -16,6 +16,10 @@ public class GameOperator {
         this.numberTurns++;
     }
 
+    public boolean isSameNumberGames(String numberGamesString){
+        return Integer.parseInt(numberGamesString) == numberGames;
+    }
+
     public boolean isTurnEnd(){
         return numberGames == numberTurns;
     }
@@ -28,8 +32,8 @@ public class GameOperator {
             throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다.");
         }
         int numberGames = Integer.parseInt(numberGamesString);
-        if (numberGames == 0){
-            throw new IllegalArgumentException("[ERROR] 입력한 값이 1이상이어야 합니다");
+        if (numberGames < 1){
+            throw new IllegalArgumentException("[ERROR] 입력한 값이 1이상이어야 합니다.");
         }
         return numberGames;
     }
