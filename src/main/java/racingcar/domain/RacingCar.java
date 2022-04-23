@@ -31,10 +31,10 @@ public class RacingCar {
     private String racingCarCreateValidation(String name){
         // 자동차 이름이 존재하지 않는 경우
         if (StringUtils.isBlank(name)){
-            throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력하세요");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력하세요.");
         }
         if (name.length() > 5){
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
         }
         return name;
     }

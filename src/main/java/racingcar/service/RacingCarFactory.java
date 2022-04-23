@@ -1,8 +1,8 @@
 package racingcar.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.RacingCar;
 
@@ -32,10 +32,10 @@ public class RacingCarFactory {
     }
 
     private void joinRacingCars(String[] racingJoinCarNames){
-        for (String racingJoinCarName: racingJoinCarNames){
+        Arrays.asList(racingJoinCarNames).forEach(racingJoinCarName -> {
             isSameNameRacingCarValidation(racingJoinCarName);
             racingJoinCars.put(racingJoinCarName, joinRacingCar(racingJoinCarName));
-        }
+        });
     }
 
     private void isSameNameRacingCarValidation(String racingJoinCarName){
@@ -47,7 +47,7 @@ public class RacingCarFactory {
 
     private void racingGamePlayerNameInputValidation(String input){
         if (StringUtils.isBlank(input)){
-            throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력하세요");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력하세요.");
         }
     }
 
