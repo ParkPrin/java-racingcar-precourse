@@ -47,7 +47,7 @@ public class CarManager {
 
     private void racingGamePlayerNameInputValidation(String input){
         if (StringUtils.isBlank(input)){
-            throw new IllegalArgumentException("[ERROR] 자동차 이름을 입력하세요.");
+            throw new IllegalArgumentException("[ERROR] 값을 입력하세요.");
         }
     }
 

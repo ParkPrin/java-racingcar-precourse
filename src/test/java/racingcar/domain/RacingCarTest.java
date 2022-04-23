@@ -20,7 +20,7 @@ public class RacingCarTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자동차 이름을 입력하세요.");
+                .hasMessage("[ERROR] 값을 입력하세요.");
     }
 
     @DisplayName("레이싱카 생성 테스트 - 실패(이름5자초과)")

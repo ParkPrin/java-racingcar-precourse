@@ -24,7 +24,7 @@ public class RacingCarFactoryTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자동차 이름을 입력하세요.");
+                .hasMessage("[ERROR] 값을 입력하세요.");
 
     }
 
