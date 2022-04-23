@@ -16,11 +16,11 @@ public class RacingCarTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCar racingcar = new RacingCar(name)            ;
+                    RacingCar racingcar = RacingCar.getInstance(name);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자동차 이름을 입력하세요.");
+                .hasMessage("[ERROR] 값을 입력하세요.");
     }
 
     @DisplayName("레이싱카 생성 테스트 - 실패(이름5자초과)")
@@ -32,7 +32,7 @@ public class RacingCarTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCar racingcar = new RacingCar(name)            ;
+                    RacingCar racingcar = RacingCar.getInstance(name);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -46,7 +46,7 @@ public class RacingCarTest {
         String name = "jimi";
 
         // when
-        RacingCar racingcar = new RacingCar(name);
+        RacingCar racingcar = RacingCar.getInstance(name);
 
         // then
         assertEquals(racingcar.getName(), name);

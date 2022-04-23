@@ -6,6 +6,7 @@ import java.util.Arrays;
 import org.assertj.core.util.Sets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.CarManager;
 
 public class RacingCarFactoryTest {
 
@@ -18,12 +19,12 @@ public class RacingCarFactoryTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCarFactory rcf =new RacingCarFactory() ;
+                    CarManager rcf =new CarManager() ;
                     rcf.startRacingGame(input);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자동차 이름을 입력하세요.");
+                .hasMessage("[ERROR] 값을 입력하세요.");
 
     }
 
@@ -36,7 +37,7 @@ public class RacingCarFactoryTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    RacingCarFactory rcf =new RacingCarFactory() ;
+                    CarManager rcf =new CarManager() ;
                     rcf.startRacingGame(input);
                 }
         )
@@ -52,7 +53,7 @@ public class RacingCarFactoryTest {
         String input = "jimi,pobi,chris";
 
         // when
-        RacingCarFactory rcf =new RacingCarFactory() ;
+        CarManager rcf =new CarManager() ;
         rcf.startRacingGame(input);
 
         // then
