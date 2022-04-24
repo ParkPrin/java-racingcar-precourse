@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Random;
 import org.junit.platform.commons.util.StringUtils;
 
 public class RacingCar {
@@ -19,8 +20,16 @@ public class RacingCar {
         return travel;
     }
 
-    public void raingDistance(int travel) {
-        this.travel = this.travel + travel;
+    public void runRacing() {
+        this.travel = this.travel + goTravel();
+    }
+
+    private int goTravel(){
+        int randomValue = (int)Math.random()*10;
+        if (randomValue < 4){
+            return 0;
+        }
+        return randomValue;
     }
 
     public static RacingCar getInstance(String name){
