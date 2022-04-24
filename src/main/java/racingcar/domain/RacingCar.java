@@ -3,15 +3,13 @@ package racingcar.domain;
 import java.util.Random;
 import org.junit.platform.commons.util.StringUtils;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar>{
     final private String name;
     private int travel;
-    private Random random;
 
     private RacingCar(String name){
         this.name = racingCarCreateValidation(name);
         this.travel = 0;
-        random = new Random(System.currentTimeMillis());
     }
 
     public String getName() {
@@ -27,7 +25,7 @@ public class RacingCar {
     }
 
     private int goTravel(){
-        int randomValue = random.nextInt(10);
+        int randomValue = new Random().nextInt(10);
         if (randomValue < 4){
             return 0;
         }
@@ -52,5 +50,10 @@ public class RacingCar {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
         }
         return name;
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return o.getTravel() - getTravel();
     }
 }
