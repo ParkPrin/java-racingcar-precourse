@@ -1,14 +1,17 @@
 package racingcar.domain;
 
+import java.util.Random;
 import org.junit.platform.commons.util.StringUtils;
 
 public class RacingCar {
     final private String name;
     private int travel;
+    private Random random;
 
     private RacingCar(String name){
         this.name = racingCarCreateValidation(name);
         this.travel = 0;
+        random = new Random(System.currentTimeMillis());
     }
 
     public String getName() {
@@ -19,8 +22,16 @@ public class RacingCar {
         return travel;
     }
 
-    public void raingDistance(int travel) {
-        this.travel = this.travel + travel;
+    public void runRacing() {
+        this.travel = this.travel + goTravel();
+    }
+
+    private int goTravel(){
+        int randomValue = random.nextInt(10);
+        if (randomValue < 4){
+            return 0;
+        }
+        return randomValue;
     }
 
     public static RacingCar getInstance(String name){
