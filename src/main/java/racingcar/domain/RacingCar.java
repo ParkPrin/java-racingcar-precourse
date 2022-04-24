@@ -6,10 +6,12 @@ import org.junit.platform.commons.util.StringUtils;
 public class RacingCar {
     final private String name;
     private int travel;
+    private Random random;
 
     private RacingCar(String name){
         this.name = racingCarCreateValidation(name);
         this.travel = 0;
+        random = new Random(System.currentTimeMillis());
     }
 
     public String getName() {
@@ -25,7 +27,7 @@ public class RacingCar {
     }
 
     private int goTravel(){
-        int randomValue = (int)Math.random()*10;
+        int randomValue = random.nextInt(10);
         if (randomValue < 4){
             return 0;
         }

@@ -1,9 +1,12 @@
 package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class RacingCarTest {
 
@@ -50,6 +53,26 @@ public class RacingCarTest {
 
         // then
         assertEquals(racingcar.getName(), name);
+
+    }
+
+    @DisplayName("레이싱카 생성 후 주행테스트 랜덤값 3이하면 0을 랜덤값 4이상 9이하이면 그대로 반영 - 10번 테스트 랜덤값")
+    @ParameterizedTest
+    @CsvSource(value = {"jimi", "aimi", "bimi", "cimi", "dimi", "eimi", "fimi", "gimi", "himi", "kimi"})
+    void createRacingCarRacingTest(String name){
+
+        // when
+        RacingCar racingcar = RacingCar.getInstance(name);
+        racingcar.runRacing();
+        final int travel = racingcar.getTravel();
+        if (travel < 4){
+            assertEquals(travel, 0);
+        } else {
+            assertTrue(travel >=4 && travel <= 9);
+        }
+
+        // then
+
 
     }
 
