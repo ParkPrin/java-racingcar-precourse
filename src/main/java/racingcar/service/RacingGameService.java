@@ -1,6 +1,7 @@
 package racingcar.service;
 
-import java.util.ArrayList;
+import static racingcar.common.CommonVariable.EXECUTE_RESULT;
+
 import java.util.Arrays;
 import java.util.Map;
 import racingcar.domain.CarManager;
@@ -17,7 +18,7 @@ public class RacingGameService {
     }
 
     public void runRacingGame(){
-        System.out.println("실행 결과");
+        System.out.println(EXECUTE_RESULT);
         while(!gameOperator.isTurnEnd()){
             final Map<String, RacingCar> joinRacingCarsMap = carManager.getJoinRacingCarsMap();
             Arrays.asList(carManager.getRacingJoinCarNames()).forEach(racingCarName -> {

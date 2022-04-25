@@ -1,6 +1,10 @@
 package racingcar.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NOT_NUMBER;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_ONE_LESS;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +23,7 @@ public class GameOperatorTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 값을 입력하세요.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
     }
 
     @DisplayName("레이싱카 게임 진행 횟수 입력 테스트 - 실패(입력값 숫자 아님)")
@@ -35,7 +39,7 @@ public class GameOperatorTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 입력한 값이 숫자가 아닙니다.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NOT_NUMBER);
     }
 
     @DisplayName("레이싱카 게임 진행 횟수 입력 테스트 - 실패(1미만인경우)")
@@ -50,7 +54,7 @@ public class GameOperatorTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 입력한 값이 1이상이어야 합니다.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_ONE_LESS);
     }
 
     @DisplayName("레이싱카 게임 진행 횟수 입력 테스트 - 실패(1미만인경우)")

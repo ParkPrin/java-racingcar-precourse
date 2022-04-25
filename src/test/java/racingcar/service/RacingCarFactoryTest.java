@@ -1,6 +1,9 @@
 package racingcar.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_SAME_RACING_CAR_NAME;
 
 import java.util.Arrays;
 import org.assertj.core.util.Sets;
@@ -24,7 +27,7 @@ public class RacingCarFactoryTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 값을 입력하세요.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
 
     }
 
@@ -42,7 +45,7 @@ public class RacingCarFactoryTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 레이싱게임에 동일한 이름의 참가자가 존재합니다.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_SAME_RACING_CAR_NAME);
 
     }
 

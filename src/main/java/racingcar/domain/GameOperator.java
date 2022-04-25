@@ -1,5 +1,10 @@
 package racingcar.domain;
 
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NOT_NUMBER;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_ONE_LESS;
+
 import org.junit.platform.commons.util.StringUtils;
 
 public class GameOperator implements GameInput{
@@ -7,7 +12,6 @@ public class GameOperator implements GameInput{
     private int numberTurns;
 
     public GameOperator(){
-        ;
         this.numberTurns = 0;
     }
 
@@ -25,14 +29,14 @@ public class GameOperator implements GameInput{
 
     private int numberGamesValidation(String numberGamesString){
         if (StringUtils.isBlank(numberGamesString)) {
-            throw new IllegalArgumentException("[ERROR] 값을 입력하세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
         }
         if (!numberGamesString.matches("[+-]?\\d*(\\.\\d+)?")){
-            throw new IllegalArgumentException("[ERROR] 입력한 값이 숫자가 아닙니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NOT_NUMBER);
         }
         int numberGames = Integer.parseInt(numberGamesString);
         if (numberGames < 1){
-            throw new IllegalArgumentException("[ERROR] 입력한 값이 1이상이어야 합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_ONE_LESS);
         }
         return numberGames;
     }

@@ -1,5 +1,9 @@
 package racingcar.domain;
 
+import static racingcar.common.CommonVariable.ERROR_MESSAGE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_RACING_CAR_NAME_IS_OVER_SIX;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.platform.commons.util.StringUtils;
 
@@ -46,18 +50,12 @@ public class RacingCar implements Comparable<RacingCar>{
         return new RacingCar(name);
     }
 
-    /**
-     * 자동차 이름의 유효성검사
-     * @param name
-     * @return
-     */
     private String racingCarCreateValidation(String name){
-        // 자동차 이름이 존재하지 않는 경우
         if (StringUtils.isBlank(name)){
-            throw new IllegalArgumentException("[ERROR] 값을 입력하세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
         }
         if (name.length() > 5){
-            throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_RACING_CAR_NAME_IS_OVER_SIX);
         }
         return name;
     }
