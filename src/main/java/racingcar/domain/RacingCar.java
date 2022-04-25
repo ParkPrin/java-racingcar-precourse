@@ -1,9 +1,6 @@
 package racingcar.domain;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Random;
 import org.junit.platform.commons.util.StringUtils;
 
 public class RacingCar implements Comparable<RacingCar>{

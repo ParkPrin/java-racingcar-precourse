@@ -1,14 +1,13 @@
 package racingcar.domain;
 
 import org.junit.platform.commons.util.StringUtils;
-import org.mockito.internal.util.StringUtil;
 
-public class GameOperator {
-    final private int numberGames;
+public class GameOperator implements GameInput{
+    private int numberGames;
     private int numberTurns;
 
-    public GameOperator(String numberGamesString){
-        this.numberGames = numberGamesValidation(numberGamesString);
+    public GameOperator(){
+        ;
         this.numberTurns = 0;
     }
 
@@ -36,5 +35,10 @@ public class GameOperator {
             throw new IllegalArgumentException("[ERROR] 입력한 값이 1이상이어야 합니다.");
         }
         return numberGames;
+    }
+
+    @Override
+    public void gameStartInput(String input) {
+        this.numberGames = numberGamesValidation(input);
     }
 }
