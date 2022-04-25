@@ -15,7 +15,7 @@ public class GameOperatorTest {
     void gameOperationInputNumberGamesToFailAtInputNull(String numberGamesString){
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    new GameOperator(numberGamesString);
+                    new GameOperator().gameStartInput(numberGamesString);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -31,7 +31,7 @@ public class GameOperatorTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    new GameOperator(numberGamesString);
+                    new GameOperator().gameStartInput(numberGamesString);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -46,7 +46,7 @@ public class GameOperatorTest {
         // when & then
         org.assertj.core.api.Assertions.assertThatThrownBy(
                 () -> {
-                    new GameOperator(numberGamesString);
+                    new GameOperator().gameStartInput(numberGamesString);
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
@@ -59,8 +59,8 @@ public class GameOperatorTest {
     void gameOperationInputNumberGamesToSuccess(String numberGamesString) {
 
         // when
-        final GameOperator gameOperator = new GameOperator(numberGamesString);
-
+        final GameOperator gameOperator = new GameOperator();
+        gameOperator.gameStartInput(numberGamesString);
         assertTrue(gameOperator.isSameNumberGames(numberGamesString));
 
     }

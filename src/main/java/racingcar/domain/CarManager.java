@@ -4,20 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.junit.platform.commons.util.StringUtils;
-import racingcar.domain.RacingCar;
 
-public class CarManager {
+public class CarManager implements GameInput{
     private Map<String, RacingCar> racingJoinCars;
-    private Set<String> gameWinnerNames;
-    private int gameWinnerTravel;
     private String[] racingJoinCarNames;
     public CarManager(){
-        gameWinnerNames = new HashSet<String>();
         racingJoinCars = new HashMap<>();
     }
 
@@ -71,12 +65,21 @@ public class CarManager {
     }
 
     public void racingGameWinnerPrint(){
+        List<RacingCar> racingCars =  sortToRacingCars();
+        int winnerTravel = racingCars.get(0).getTravel();
+        System.out.println("최종 우승자는 " + makeWinnerRemarks(racingCars, winnerTravel));
+    }
+
+    private List<RacingCar> sortToRacingCars(){
         List<RacingCar> racingCars =  new ArrayList<>();
         Arrays.asList(racingJoinCarNames).forEach(racingCarName -> {
             racingCars.add(racingJoinCars.get(racingCarName));
         });
         Collections.sort(racingCars);
-        int winnerTravel = racingCars.get(0).getTravel();
+        return racingCars;
+    }
+
+    private String makeWinnerRemarks(List<RacingCar> racingCars, int winnerTravel){
         StringBuilder winnerNames = new StringBuilder();
         racingCars.forEach(racingCar -> {
             if (winnerTravel == racingCar.getTravel()) {
@@ -88,8 +91,12 @@ public class CarManager {
                 }
             }
         });
-        System.out.println("최종 우승자는 " + winnerNames.toString());
+        return winnerNames.toString();
+    }
 
-
+    @Override
+    public void gameStartInput(String input) {
+        racingGamePlayerNameInputValidation(input);
+        joinRacingCars(racingJoinCarNames(input));
     }
 }
