@@ -50,13 +50,7 @@ public class RacingCar implements Comparable<RacingCar>{
         return new RacingCar(name);
     }
 
-    /**
-     * 자동차 이름의 유효성검사
-     * @param name
-     * @return
-     */
     private String racingCarCreateValidation(String name){
-        // 자동차 이름이 존재하지 않는 경우
         if (StringUtils.isBlank(name)){
             throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
         }
