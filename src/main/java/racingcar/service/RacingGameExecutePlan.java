@@ -1,5 +1,8 @@
 package racingcar.service;
 
+import static racingcar.common.CommonVariable.OPENNING_REMARK_GAME_NUMBER_INPUT;
+import static racingcar.common.CommonVariable.OPENNING_REMARK_RACING_CAR_NAME_INPUT;
+
 import java.util.Scanner;
 import racingcar.domain.CarManager;
 import racingcar.domain.GameInput;
@@ -13,9 +16,9 @@ public class RacingGameExecutePlan {
 
     public void gameExecutePlan(){
         GameInput carManager = new CarManager();
-        gameInfoInput(carManager, "경주할자동차이름(이름은쉼표(,)기준으로구분)");
+        gameInfoInput(carManager, OPENNING_REMARK_RACING_CAR_NAME_INPUT);
         GameInput gameOperator = new GameOperator();
-        gameInfoInput(gameOperator, "시도할회수");
+        gameInfoInput(gameOperator, OPENNING_REMARK_GAME_NUMBER_INPUT);
         final RacingGameService racingGameService = new RacingGameService((CarManager)carManager, (GameOperator)gameOperator);
         racingGameService.runRacingGame();
         racingGameService.runGameResultPrint();

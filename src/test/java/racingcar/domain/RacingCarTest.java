@@ -2,6 +2,9 @@ package racingcar.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_RACING_CAR_NAME_IS_OVER_SIX;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +26,7 @@ public class RacingCarTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 값을 입력하세요.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
     }
 
     @DisplayName("레이싱카 생성 테스트 - 실패(이름5자초과)")
@@ -39,7 +42,7 @@ public class RacingCarTest {
                 }
         )
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
+                .hasMessage(ERROR_MESSAGE + ERROR_MESSAGE_RACING_CAR_NAME_IS_OVER_SIX);
     }
 
     @DisplayName("레이싱카 생성 테스트 - 성공")

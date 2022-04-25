@@ -1,5 +1,10 @@
 package racingcar.domain;
 
+import static racingcar.common.CommonVariable.ERROR_MESSAGE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_INPUT_IS_NULLE;
+import static racingcar.common.CommonVariable.ERROR_MESSAGE_SAME_RACING_CAR_NAME;
+import static racingcar.common.CommonVariable.LAST_WINNER_REMARK_PREFIX;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,13 +55,13 @@ public class CarManager implements GameInput{
     private void isSameNameRacingCarValidation(String racingJoinCarName){
         if (racingJoinCars.containsKey(racingJoinCarName)){
             racingJoinCars.clear();
-            throw new IllegalArgumentException("[ERROR] 레이싱게임에 동일한 이름의 참가자가 존재합니다.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_SAME_RACING_CAR_NAME);
         }
     }
 
     private void racingGamePlayerNameInputValidation(String input){
         if (StringUtils.isBlank(input)){
-            throw new IllegalArgumentException("[ERROR] 값을 입력하세요.");
+            throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_MESSAGE_INPUT_IS_NULLE);
         }
     }
 
@@ -67,7 +72,7 @@ public class CarManager implements GameInput{
     public void racingGameWinnerPrint(){
         List<RacingCar> racingCars =  sortToRacingCars();
         int winnerTravel = racingCars.get(0).getTravel();
-        System.out.println("최종 우승자는 " + makeWinnerRemarks(racingCars, winnerTravel));
+        System.out.println(LAST_WINNER_REMARK_PREFIX + makeWinnerRemarks(racingCars, winnerTravel));
     }
 
     private List<RacingCar> sortToRacingCars(){
