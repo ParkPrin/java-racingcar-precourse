@@ -22,8 +22,8 @@ public class RacingGameService {
             final Map<String, RacingCar> joinRacingCarsMap = carManager.getJoinRacingCarsMap();
             Arrays.asList(carManager.getRacingJoinCarNames()).forEach(racingCarName -> {
                 RacingCar racingCar = joinRacingCarsMap.get(racingCarName);
-                System.out.println(racingCarName + ": " + racingCar.getTravel());
                 racingCar.runRacing();
+                System.out.println(racingCarName + " : " + racingCar.showGoToDistance());
             });
             gameOperator.runTurn();
             System.out.println();

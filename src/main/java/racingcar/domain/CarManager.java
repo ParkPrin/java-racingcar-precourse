@@ -88,7 +88,7 @@ public class CarManager {
                 }
             }
         });
-        System.out.println("최종 우승자: " + winnerNames.toString());
+        System.out.println("최종 우승자는 " + winnerNames.toString());
 
 
     }

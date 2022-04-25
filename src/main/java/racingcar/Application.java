@@ -16,7 +16,7 @@ public class Application {
                 carManager.startRacingGame(scanner.next());
                 isRacingCarRegister = true;
             } catch (IllegalArgumentException e){
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
                 isRacingCarRegister = false;
                 System.out.println("경주할자동차이름(이름은쉼표(,)기준으로구분)");
             }
@@ -29,7 +29,7 @@ public class Application {
                 gameOperator = new GameOperator(scanner.next());
                 isNumberGamesInputPass = true;
             } catch (IllegalArgumentException e){
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
                 isNumberGamesInputPass = false;
                 System.out.println("시도할회수");
             }
