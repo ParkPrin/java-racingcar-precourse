@@ -1,17 +1,20 @@
 package racingcar.domain;
 
+import static org.mockito.ArgumentMatchers.anyInt;
+
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Random;
 import org.junit.platform.commons.util.StringUtils;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar>{
     final private String name;
     private int travel;
-    private Random random;
+    private StringBuilder stringBuilder;
 
     private RacingCar(String name){
         this.name = racingCarCreateValidation(name);
         this.travel = 0;
-        random = new Random(System.currentTimeMillis());
+        stringBuilder = new StringBuilder();
     }
 
     public String getName() {
@@ -22,16 +25,24 @@ public class RacingCar {
         return travel;
     }
 
+    public String showGoToDistance(){
+        stringBuilder.setLength(0);
+        for (int i =0; i < travel; i++){
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString();
+    }
+
     public void runRacing() {
         this.travel = this.travel + goTravel();
     }
 
     private int goTravel(){
-        int randomValue = random.nextInt(10);
+        int randomValue = Randoms.pickNumberInRange(0, 9);
         if (randomValue < 4){
             return 0;
         }
-        return randomValue;
+        return 1;
     }
 
     public static RacingCar getInstance(String name){
@@ -52,5 +63,10 @@ public class RacingCar {
             throw new IllegalArgumentException("[ERROR] 자동차 이름은 5자 이하만 가능합니다.");
         }
         return name;
+    }
+
+    @Override
+    public int compareTo(RacingCar o) {
+        return o.getTravel() - getTravel();
     }
 }

@@ -1,15 +1,28 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.RacingCar;
 
 public class CarManager {
     private Map<String, RacingCar> racingJoinCars;
+    private Set<String> gameWinnerNames;
+    private int gameWinnerTravel;
+    private String[] racingJoinCarNames;
     public CarManager(){
+        gameWinnerNames = new HashSet<String>();
         racingJoinCars = new HashMap<>();
+    }
+
+    public String[] getRacingJoinCarNames() {
+        return racingJoinCarNames;
     }
 
     public void startRacingGame(String input){
@@ -18,7 +31,8 @@ public class CarManager {
     }
 
     private String[] racingJoinCarNames(String input){
-        return input.split(",");
+        this.racingJoinCarNames = input.split(",");
+        return racingJoinCarNames;
     }
 
     private RacingCar joinRacingCar(String name){
@@ -27,6 +41,7 @@ public class CarManager {
             racingCar = RacingCar.getInstance(name);
         } catch(IllegalArgumentException e){
             racingJoinCars.clear();
+            throw new IllegalArgumentException(e.getMessage());
         }
         return racingCar;
     }
@@ -53,5 +68,28 @@ public class CarManager {
 
     public Map<String, RacingCar> getJoinRacingCarsMap(){
         return racingJoinCars;
+    }
+
+    public void racingGameWinnerPrint(){
+        List<RacingCar> racingCars =  new ArrayList<>();
+        Arrays.asList(racingJoinCarNames).forEach(racingCarName -> {
+            racingCars.add(racingJoinCars.get(racingCarName));
+        });
+        Collections.sort(racingCars);
+        int winnerTravel = racingCars.get(0).getTravel();
+        StringBuilder winnerNames = new StringBuilder();
+        racingCars.forEach(racingCar -> {
+            if (winnerTravel == racingCar.getTravel()) {
+                if (winnerNames.length() != 0){
+                    winnerNames.append(", " +racingCar.getName()) ;
+                }
+                if (winnerNames.length() == 0){
+                    winnerNames.append(racingCar.getName());
+                }
+            }
+        });
+        System.out.println("최종 우승자는 " + winnerNames.toString());
+
+
     }
 }

@@ -65,15 +65,7 @@ public class RacingCarTest {
         RacingCar racingcar = RacingCar.getInstance(name);
         racingcar.runRacing();
         final int travel = racingcar.getTravel();
-        if (travel < 4){
-            assertEquals(travel, 0);
-        } else {
-            assertTrue(travel >=4 && travel <= 9);
-        }
-
-        // then
-
-
+        assertTrue(travel == 0 || travel == 1);
     }
 
 }
